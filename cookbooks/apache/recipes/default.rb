@@ -5,10 +5,16 @@
 # Copyright:: 2018, The Authors, All Rights Reserved.
 #
 # Installs Apache server
-#
+
+
+if node['platform'] == centos
+	package = httpd
+elsif node ['platform'] == debian
+	package = apache2
+end
 
 package 'apache' do
-	package_name 'httpd'
+	package_name package
 	action :install
 end
 
