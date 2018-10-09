@@ -7,10 +7,10 @@
 # Installs Apache server
 
 
-if node['platform'] == centos
-	package = httpd
-elsif node ['platform'] == debian
-	package = apache2
+if node['platform_family'] == "rhel"
+	package = "httpd"
+elsif node ['platform_family'] == "debian"
+	package = "apache2"
 end
 
 package 'apache' do
